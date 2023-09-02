@@ -1,6 +1,3 @@
-# Rummy
-Coding rummy card game for semester project
-
 Group name: NAFI
 
 Group members: Bradin Shaw, Malesela Lethabo Mathlo, Dylan McDonough, Anesipho Nkonkobe
