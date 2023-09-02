@@ -1,2 +1,2 @@
 # Rummy
-Coding rummy card game 
+Coding rummy card game for semester project
