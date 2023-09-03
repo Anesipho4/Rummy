@@ -1,6 +1,6 @@
 Group name: NAFI
 
-Group members: Bradin Shaw, Malesela Lethabo Mathlo, Dylan McDonough, Mbale Moloi, Anesipho Nkonkobe
+Group members: Bradin Shaw, Malesela Lethabo Mathlo, Dylan McDonogh, Mbale Moloi, Anesipho Nkonkobe
 
 Group mentor: Zelalem Shibeshi
 
