@@ -112,8 +112,4 @@ public class RummyTest
             System.out.print(array[i] + " ");
         }
     }
-
-    public static void player(){
-
-    }
 }
