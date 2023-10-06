@@ -3,31 +3,44 @@ import java.util.List;
 
 
 public class OpenDeck{
-	private	ArrayList<integer> deck;
+	private	ArrayList<Card> deck;
+	private ArrayList<Card> newlist=new ArrayList<>();
 
-	public List<String> getList(){
-		return deck;
-}
+
+	//constructor
+	public OpenDeck(){
+		deck=new ArrayList<>();
+	}
+	
+	public ArrayList<Card> getOpenDeck(){
+		return deck;	
+	}
+	
 	//play card into an open deck
-	public void AppendToDeck(int[] card){
-		deck.addAll(card);
+	public void Add(Card card){
+		deck.add(card);
+	}
 
-}
-
-	//for getting one or more cards from the open deck
-	public static ArrayList<String> GetCard(int n){
+	//for getting one card from the open deck 
+	public Card GetLastCard(int n){
 		int lastcard= deck.size()-1;
-
-		//if player decides to draw card from an open deck
-		if (n==0){
 			return deck.get(lastcard);
-		}
+	}
+	
+	//displays face card
+	public Card DisplayLastCard(int n){
+			return deck.get(deck.size()-1);
+	}
 
 		//when the cards in a closed deck have been depleted...
 		//the cards that have been played are to be recycled
-		if(n==-1){
-			newlist=deck.subList(0,lastcard);
+	public ArrayList<Card> RecycleDeck(){
+			newlist=new ArrayList<Card>(deck.subList(0,deck.size()-1));
 			return newlist;
 		}
+	
+	
+	public String toString(){
+		return deck.toString();
 	}
 }
