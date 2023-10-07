@@ -15,13 +15,18 @@ public class Stack
         stack.add(card);
     }
 
-    public void removeCard()
+    public Card removeCard()
     {
-        stack.removeLast();
+        return stack.removeLast();
     }
 
     public Card pickTopStack()
     {
         return stack.getLast();
+    }
+
+    public boolean isEmpty()
+    {
+        return stack.isEmpty();
     }
 }
