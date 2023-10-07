@@ -55,4 +55,9 @@ public class Deck
         deck.add(card);
     }
 
+    public int getDeckSize()
+    {
+        return deck.size();
+    }
+
 }
