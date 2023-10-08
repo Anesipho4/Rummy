@@ -12,7 +12,6 @@ public class Game
 
     private boolean playersTurn = true;
 
-
     private void dealCards()
     {
         for (int i = 0; i < handSize; i++)
@@ -44,14 +43,14 @@ public class Game
                 System.out.println("Enter any number when player is ready");
                 playerReady = in.nextInt();
 
-                System.out.println("Player 1's Turn");
+                System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 1's Turn");
                 doTurn(player);
 
             } else {
                 System.out.println("Enter any number when player is ready");
                 playerReady = in.nextInt();
 
-                System.out.println("Player 2's Turn");
+                System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 2's Turn");
                 doTurn(computer);
 
             }
@@ -66,11 +65,11 @@ public class Game
         System.out.println("\nStack Top Card: " + stack.pickTopStack() + "\n");
 
         System.out.println(playersTurn ? "Player 1 Hand:" : "Player 2 Hand:");
-        prntln(playersHand.toString() + "\n");
+        pln(playersHand.toString() + "\n");
 
         Scanner in = new Scanner(System.in);
 
-        prntln("1. Draw from Deck\n2. Draw from Stack");
+        pln("1. Draw from Deck\n2. Draw from Stack");
         int draw = in.nextInt();
 
 
@@ -85,7 +84,7 @@ public class Game
 
         }
         else
-            prntln("Invalid option; please input either 1 or 2");
+            pln("Invalid option; please input either 1 or 2");
 
         playersTurn = !playersTurn;
     }
@@ -100,8 +99,9 @@ public class Game
 
         if (true)
         {
-            prntln("Added from Deck: " + card.toString().toUpperCase());
-            prntln(hand.toString() + "\n");
+            pln("Added from Deck: " + card.toString().toUpperCase());
+            hand.sort();
+            pln(hand.toString() + "\n");
 
             discardFromHand(hand);
 
@@ -120,8 +120,9 @@ public class Game
         if (true)
         {
 
-            prntln("Added from Stack: " + card.toString().toUpperCase());
-
+            pln("Added from Stack: " + card.toString().toUpperCase());
+            hand.sort();
+            pln(hand.toString() + "\n");
             discardFromHand(hand);
 
         }
@@ -133,7 +134,7 @@ public class Game
     {
         Scanner in = new Scanner(System.in);
 
-        prntln("Which card would you like to discard?");
+        pln("Which card would you like to discard?");
         int discard = in.nextInt();
 
         Card c = hand.removeCard(discard-1);
@@ -142,8 +143,9 @@ public class Game
 
         if (true)
         {
-            prnt("Discarded: " + c.toString().toUpperCase());
-            prntln("\nHand now: " + hand.toString() + "\n");
+            hand.sort();
+            p("Discarded: " + c.toString().toUpperCase());
+            pln("\nHand now:\t" + hand.toString() + "\n");
 
         }
 
@@ -157,12 +159,12 @@ public class Game
 
     }
 
-    public static void prntln(String s)
+    public static void pln(String s)
     {
         System.out.println(s);
     }
 
-    public static void prnt(String s)
+    public static void p(String s)
     {
         System.out.print(s);
     }
