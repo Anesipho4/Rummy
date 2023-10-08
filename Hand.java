@@ -10,7 +10,7 @@ public class Hand
         hand = new DefaultListModel<Card>();
     }
 
-    public void removeCard(Card card)
+    public void removeCard(int card)
     {
         hand.removeElement(card);
     }
