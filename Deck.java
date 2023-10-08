@@ -59,5 +59,13 @@ public class Deck
     {
         return deck.size();
     }
+    public String toString(){
+	return deck.toString();
+
+}
+    public LinkedList<Card> getDeck(){
+return deck;
+}
+
 
 }
