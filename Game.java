@@ -12,6 +12,7 @@ public class Game
     private boolean playersTurn = false;
     private boolean playerDrew = false;
     private boolean stateWhoseTurn = false;
+
     private void dealCards()
     {
         for (int i = 0; i < handSize; i++)
@@ -30,6 +31,10 @@ public class Game
     public void start()
     {
         dealCards();
+        stackFirstCard();
+
+        System.out.println(playersTurn ? "Player 2 Hand:" : "Player 1 Hand:");
+        System.out.println(player.toString() + "\n");
 
         Card firstStackCard = deck.dealCard();
         stack.addCard(firstStackCard);
@@ -38,84 +43,113 @@ public class Game
         {
             if (playersTurn)
             {
+                System.out.println("Stack Top Card: " + stack.pickTopStack());
                 doTurn(player);
             }
             else
             {
+                System.out.println("Stack Top Card: " + stack.pickTopStack());
                 doTurn(computer);
             }
         }
 
     }
 
-    private void doTurn(Hand playersHand) {
+    private void doTurn(Hand playersHand)
+    {
+        Scanner in = new Scanner(System.in);
 
-        if (stack.isEmpty())
+        System.out.println("1. Draw from Deck\n2. Draw from Stack");
+        int draw = in.nextInt();
+
+        if (draw == 1)
         {
             takeFromDeck(playersHand);
+//            discard(player, );
         }
-//        else
-//        {
-//            int oneOrTwo = ThreadLocalRandom.current().nextInt(1, 3);
-//
-//            if (oneOrTwo == 1)
-//            {
-//                takeFromDeck(playersHand);
-//            }
-//            else
-//            {
-//                takeFromStack(playersHand);
-//            }
-//
-//        }
+        else if (draw == 2)
+        {
+            if (!stack.isEmpty())
+            {
+                takeFromStack(playersHand);
+            }
+            else
+            {
+                System.out.println("Stack is empty. Drawing from deck.");
+                takeFromDeck(playersHand);
+            }
+        }
+        else
+            System.out.println("Invalid option; please input either 1 or 2");
 
-        playerDrew = true;
-        playersTurn = !playersTurn;
-        stateWhoseTurn = false;
+
+
+            playerDrew = true;
+            playersTurn = !playersTurn;
+            stateWhoseTurn = false;
     }
 
-    private void takeFromDeck(Hand playersHand)
+    private void takeFromDeck(Hand hand)
     {
-
         Card card = deck.dealCard();
-        playersHand.addCard(card);
+        hand.addCard(card);
 
         if (true)
         {
+
+            System.out.println("Added from Deck: " + card.toString().toUpperCase());
+
             if (!stateWhoseTurn)
             {
+                System.out.println(hand.toString()+ "\n");
+
                 System.out.println(playersTurn ? "Player 1" : "Player 2");
                 stateWhoseTurn = true;
             }
 
-            System.out.println("\tAdded from Deck: " + card.toString().toUpperCase());
         }
-
     }
 
     private void takeFromStack(Hand hand)
     {
-
-        Card card = stack.removeCard();
-
-        if (card == null) {
-            return;
-        }
-
+        Card card = stack.pickTopStack();
         hand.addCard(card);
+        stack.removeCard();
+
+        if (true)
+        {
+
+            System.out.println("Added from Stack: " + card.toString().toUpperCase());
+
+            if (!stateWhoseTurn)
+            {
+                System.out.println(hand.toString()+ "\n");
+
+                System.out.println(playersTurn ? "Player 1" : "Player 2");
+                stateWhoseTurn = true;
+            }
+
+        }
     }
 
-    private void discard(Hand playersHand, Card card) {
-
-        // Discard from hand
+    private void discardFromHand(Hand playersHand, int card)
+    {
+        Card c = playersHand.removeCard(card);
         playersHand.removeCard(card);
-        deck.addCard(card);
+        stack.addCard(card);
 
-        if (true) {
+        if (true)
+        {
             System.out.println("\tDiscarded: " + card.toString().toUpperCase());
             System.out.println("\tHand now: " + playersHand.toString());
         }
 
+    }
+
+    private void stackFirstCard()
+    {
+        Card c = deck.dealCard();
+        stack.addCard(c);
     }
 
     public static void main(String [] args)
